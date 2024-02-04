@@ -1,0 +1,22 @@
+.Login {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Login button {
+  background: rgb(25, 67, 255);
+  border: none;
+  padding: 10px 20px;
+  font-size: 17px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: 0.2s;
+  font-weight: bold;
+}
+
+.Login button:hover {
+  background: rgb(18, 50, 189);
+}
