@@ -1,0 +1,67 @@
+.CreatePost {
+  display: flex;
+  align-items: start;
+  flex-direction: column;
+  gap: 20px;
+  padding: 40px 20px;
+  border: 1px solid grey;
+}
+
+.CreatePostContent {
+  display: flex;
+  gap: 10px;
+}
+
+.CreatePost img {
+  border-radius: 50px;
+}
+
+.CreatePost input {
+  background: none;
+  border: none;
+  outline: none;
+  font-size: 20px;
+}
+
+.CreatePost button {
+  background: rgb(25, 67, 255);
+  border: none;
+  padding: 10px 20px;
+  font-size: 17px;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: 0.2s;
+  font-weight: bold;
+}
+
+.InputFile {
+  display: flex;
+}
+
+.InputFile input{
+  width: 35px;
+  height: 35px;
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+
+
+.InputFileIcon {
+  cursor: pointer;
+  transition: 0.2s;
+  padding: 10px;
+  border-radius: 50px;
+}
+
+.InputFileIcon:hover {
+  background: rgba(25, 67, 255, 0.281);
+}
+
+
+.CreatePostConfig {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}

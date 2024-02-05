@@ -1,0 +1,10 @@
+.Main {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+}
+
+.Main hr {
+  height: 100%;
+  border: 1px solid grey;
+}

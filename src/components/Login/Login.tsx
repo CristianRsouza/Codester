@@ -5,7 +5,7 @@ import queryString from 'query-string';
 import axios from 'axios';
 
 const Login = () => {
-    const { auth, setAuth } = useContext(Context);
+    const { auth, setAuth, setMyUser } = useContext(Context);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -17,6 +17,12 @@ const Login = () => {
                     const data = await response.data;
                     console.log(data);
                     setAuth(true)
+                    setMyUser({
+                        avatar: data.avatar_url,
+                        name: data.name,
+                        id: data.id,
+                        login: data.login
+                    })
                 } catch (error) {
                     console.error('Erro ao fazer a requisição para o servidor:', error);
                 }
@@ -42,7 +48,6 @@ const Login = () => {
   };
   
 
-    console.log(auth);
 
     return (
         <div className='Login'>

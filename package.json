@@ -13,6 +13,7 @@
     "axios": "^1.6.7",
     "cors": "^2.8.5",
     "express": "^4.18.2",
+    "lucide-react": "^0.321.0",
     "query-string": "^8.2.0",
     "query-strings": "^0.1.0",
     "react": "^18.2.0",

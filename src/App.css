@@ -2,9 +2,11 @@
   padding: 0;
   margin: 0;
   color: white;
+  list-style-type: none;
 }
 
 body {
+  overflow: hidden;
   background: black;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
