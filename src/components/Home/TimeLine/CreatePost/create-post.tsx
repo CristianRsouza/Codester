@@ -2,15 +2,15 @@ import React, { useState } from 'react';
 import { useContext } from 'react';
 import './create-post.css';
 import { Context } from '../../../../App';
-import { Image } from 'lucide-react';
+import { Divide, Image } from 'lucide-react';
 
 interface Message {
-  id: number,
-  writer: string,
-  content: string,
-  image: string | null
-  writer_login: string,
-  writer_avatar: string
+  id: number;
+  writer: string;
+  content: string;
+  image: string | null;
+  writer_login: string;
+  writer_avatar: string;
 }
 
 interface Props {
@@ -21,7 +21,8 @@ interface Props {
 const CreatePost: React.FC<Props> = ({ Messages, setMessages }) => {
   const { myUser } = useContext(Context);
   const [inputContent, setInputContent] = useState<string>('');
-  const [inputFile, setInputFile] = useState<string>('');
+  const [inputFile, setInputFile] = useState<string | null>(null);
+
 
   const handleMessageAddition = () => {
     const newMessage: Message = {
@@ -33,22 +34,44 @@ const CreatePost: React.FC<Props> = ({ Messages, setMessages }) => {
       writer_login: myUser.login
     };
 
-    setMessages([...Messages, newMessage]); 
+    setMessages([...Messages, newMessage]);
 
     setInputContent('');
     setInputFile('');
   };
 
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files[0]) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        if (typeof reader.result === 'string') {
+          setInputFile(reader.result);
+        }
+      };
+      reader.readAsDataURL(e.target.files[0]);
+    }
+  };
+
   return (
     <div className="CreatePost">
       <div className="CreatePostContent">
-        <img src={myUser.avatar} width={60} alt="" />
-        <input
-          type="text"
-          placeholder="Qual é a boa?"
-          value={inputContent}
-          onChange={(e) => setInputContent(e.target.value)}
-        />
+      <img src={myUser.avatar} className='myUserPost' width={60} alt="" />
+            <div className='PostContainer'>
+                <input
+                type="text"
+                placeholder="Qual é a boa?"
+                value={inputContent}
+                onChange={(e) => setInputContent(e.target.value)}
+              />
+                   {inputFile && <div className='ImageContainer'>
+                                    <img src={inputFile} className='Image'  alt="" />
+                                    <p onClick={() => {
+                                      setInputFile(null)
+                                    }}>x</p>
+                                  </div>}
+                  
+            </div>
+
       </div>
       <div className="CreatePostConfig">
         <div className="InputFile">
@@ -58,7 +81,7 @@ const CreatePost: React.FC<Props> = ({ Messages, setMessages }) => {
           <input
             type="file"
             accept="image/*"
-            onChange={(e) => setInputFile(e.target.value)} // handle file input change
+            onChange={handleFileChange} // Manipule o arquivo aqui
           />
         </div>
         <button onClick={handleMessageAddition}>Postar</button>

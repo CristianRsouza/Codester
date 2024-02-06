@@ -4,7 +4,8 @@
   flex-direction: column;
   gap: 20px;
   padding: 40px 20px;
-  border: 1px solid grey;
+  border: 0.5px solid rgb(36, 36, 36);
+
 }
 
 .CreatePostContent {
@@ -12,11 +13,23 @@
   gap: 10px;
 }
 
-.CreatePost img {
+.CreatePost .myUserPost {
   border-radius: 50px;
+  max-width: 60px;
+  max-height: 60px;
 }
 
-.CreatePost input {
+.CreatePost .Image {
+  width: 400px;
+  height: 400px;
+}
+
+.PostContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.PostContainer input {
   background: none;
   border: none;
   outline: none;

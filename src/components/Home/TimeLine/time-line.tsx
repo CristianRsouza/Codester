@@ -14,7 +14,7 @@ interface Message {
 const TimeLine = () => {
   
   const [Messages, setMessages] = useState<Message[]>([])
-  
+
   console.log(Messages);
   
   
@@ -28,7 +28,12 @@ const TimeLine = () => {
                   <h3>{message.writer}</h3>
                   <p>@{message.writer_login}</p>
               </div>
-              <p>{message.content}</p>
+              <div className='MessageContent'>
+                <p>{message.content}</p>
+                {message.image && <img src={message.image} className='MessageImage' alt="" />}
+
+
+              </div>
             </div>
             )
           }
