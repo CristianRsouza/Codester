@@ -6,7 +6,6 @@ const SideBar = () => {
   
   const { myUser } = useContext(Context);
   
-  console.log(myUser);
   
   
   return(

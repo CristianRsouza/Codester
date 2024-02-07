@@ -2,12 +2,11 @@ import React, { useState } from 'react';
 import { useContext } from 'react';
 import './create-post.css';
 import { Context } from '../../../../App';
-import { Divide, Image } from 'lucide-react';
-import { Socket } from 'socket.io';
+import {  Image } from 'lucide-react';
 import { io } from 'socket.io-client';
 
 
-const socket = io()
+const socket = io("http://localhost:5000")
 
 
 const CreatePost = () => {
@@ -25,7 +24,6 @@ const CreatePost = () => {
   const thisDate = `${hours}h${minutes}m, ${day}/${month}`;
   
   const handleMessageAddition = () => {
-    // Create a new message object
     const newMessage = {
       id: Math.floor(Math.random() * 100),
       writer: myUser.name,
@@ -37,13 +35,15 @@ const CreatePost = () => {
     };
 
     if (inputContent !== '') {
-      // Update messages state and emit a "post" event to the server
       setMessages([...Messages, newMessage]);
-      socket.emit("post", Messages);
+      socket.emit("post",[...Messages, newMessage]);
+      
       setInputContent('');
       setInputFile('');
     }
   };
+
+
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {

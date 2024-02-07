@@ -3,9 +3,14 @@ import './Login.css';
 import { Context } from '../../App';
 import queryString from 'query-string';
 import axios from 'axios';
+import { io } from 'socket.io-client';
 
 const Login = () => {
     const { auth, setAuth, setMyUser } = useContext(Context);
+    const socket = io("http://localhost:5000")
+
+
+
 
     useEffect(() => {
         const fetchData = async () => {
@@ -17,6 +22,7 @@ const Login = () => {
                     const data = await response.data;
                     console.log(data);
                     setAuth(true)
+                    socket.emit("connection")
                     setMyUser({
                         avatar: data.avatar_url,
                         name: data.name,
