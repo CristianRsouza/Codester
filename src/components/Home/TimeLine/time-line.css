@@ -11,8 +11,8 @@
   border: 0.5px solid rgb(36, 36, 36);
   transition: 0.2s;
   cursor: pointer;
-  flex-wrap: wrap;
-  text-wrap: wrap;
+  /* removido flex-wrap: wrap; e text-wrap: wrap; */
+  word-wrap: break-word;
 }
 
 .Message:hover {
@@ -30,6 +30,11 @@
   display: flex;
   align-items: center;
   gap: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.MessageHead p {
+  color: rgb(98, 98, 98);
 }
 
 .MessageHead img {
@@ -40,7 +45,18 @@
   border-left: 4px solid grey;
   padding: 0 60px;
   margin: 10px 20px;
+  background: none;
+  border: none;
+  outline: none;
+  font-size: 20px;
 
+  word-wrap: break-word;
+}
+
+.MessageContent img {
+  margin: 30px 50px;
+  border-radius: 10px;
+  height: 350px;
 }
 
 .ImageContainer {

@@ -8,28 +8,31 @@ const TimeLine = () => {
 
   const { Messages, setMessages } = useContext(Context);
 
+
   console.log(Messages); 
   
   return (
     <div className='TimeLine'>
     <CreatePost/>
-      {Messages.map((message: { writer_avatar: string | undefined; writer: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | null | undefined; writer_login: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | null | undefined; content: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | null | undefined; image: { toString: string | undefined; }; }) => 
-        <div className='Message'>
-          <div className='MessageHead'>
-              <img src={message.writer_avatar} width={60} alt="" />
-              <h3>{message.writer}</h3>
-              <p>@{message.writer_login}</p>
-          </div>
-          <div className='MessageContent'>
-            <p>{message.content}</p>
-            { <img src={message.image.toString()} alt="" />}
+    {Messages.map((message: { writer_avatar: string | undefined; writer: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | null | undefined; writer_login: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | null | undefined; content: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | null | undefined; image: { toString: string | undefined; } ; date: string }) => 
+    <div className='Message'>
+        <div className='MessageHead'>
+            <img src={message.writer_avatar} width={60} alt="" />
+            <h3>{message.writer}</h3>
+            <p>@{message.writer_login}</p>
+            <p>{message.date.toString()}</p>
 
 
-
-          </div>
         </div>
-        )
-      }
+        <div className='MessageContent'>
+        <p>{message.content}</p>
+
+            {message.image && <img src={message.image.toString()} alt="" />}
+
+        </div>
+    </div>
+)}
+
 </div>
   );
 };

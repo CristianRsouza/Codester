@@ -13,8 +13,14 @@ const CreatePost = () => {
   const [inputFile, setInputFile] = useState<string | null>(null);
   const { Messages, setMessages } = useContext(Context);
 
-
-
+  const date = new Date(); // Cria uma nova instância de Date
+  const hours = date.getHours();
+  const minutes = date.getMinutes();
+  const day = date.getDate();
+  const month = date.getMonth() + 1; // Os meses começam em 0, então adicionamos 1
+  
+  const thisDate = `${hours}h${minutes}m, ${day}/${month}`;
+  
   const handleMessageAddition = () => {
     const newMessage = {
       id: Math.floor(Math.random() * 100),
@@ -22,13 +28,16 @@ const CreatePost = () => {
       content: inputContent,
       image: inputFile,
       writer_avatar: myUser.avatar,
-      writer_login: myUser.login
+      writer_login: myUser.login,
+      date: thisDate // Formatando a data para o formato desejado
     };
 
+   if(inputContent != '') {
     setMessages([...Messages, newMessage]);
 
     setInputContent('');
     setInputFile('');
+   }
   };
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -48,8 +57,7 @@ const CreatePost = () => {
       <div className="CreatePostContent">
       <img src={myUser.avatar} className='myUserPost' width={60} alt="" />
             <div className='PostContainer'>
-                <input
-                type="text"
+                <textarea
                 placeholder="Qual é a boa?"
                 value={inputContent}
                 onChange={(e) => setInputContent(e.target.value)}

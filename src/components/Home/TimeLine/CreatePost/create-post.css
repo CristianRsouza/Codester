@@ -20,7 +20,6 @@
 }
 
 .CreatePost .Image {
-  width: 400px;
   height: 400px;
 }
 
@@ -30,12 +29,18 @@
   flex-direction: column;
 }
 
-.PostContainer input {
+.PostContainer textarea {
   background: none;
   border: none;
   outline: none;
   font-size: 20px;
+  width: 50px;
+  max-width: 570px;
+  resize: none;
+  min-width: 570px;
 }
+
+
 
 .CreatePost button {
   background: rgb(36, 36, 36);

@@ -18,7 +18,8 @@ interface Message {
   content: string,
   image: string | null
   writer_login: string,
-  writer_avatar: string
+  writer_avatar: string,
+  date: string
 }
 
 
