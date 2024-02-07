@@ -20,8 +20,7 @@
 }
 
 .MessageImage {
-  width: 400px;
-  height: 400px;
+  height: 350px;
   border-radius: 10px;
   border: 1px solid rgb(36, 36, 36);
   margin: 20px;

@@ -4,28 +4,19 @@ import './create-post.css';
 import { Context } from '../../../../App';
 import { Divide, Image } from 'lucide-react';
 
-interface Message {
-  id: number;
-  writer: string;
-  content: string;
-  image: string | null;
-  writer_login: string;
-  writer_avatar: string;
-}
 
-interface Props {
-  Messages: Message[];
-  setMessages: React.Dispatch<React.SetStateAction<Message[]>>;
-}
 
-const CreatePost: React.FC<Props> = ({ Messages, setMessages }) => {
+
+const CreatePost = () => {
   const { myUser } = useContext(Context);
   const [inputContent, setInputContent] = useState<string>('');
   const [inputFile, setInputFile] = useState<string | null>(null);
+  const { Messages, setMessages } = useContext(Context);
+
 
 
   const handleMessageAddition = () => {
-    const newMessage: Message = {
+    const newMessage = {
       id: Math.floor(Math.random() * 100),
       writer: myUser.name,
       content: inputContent,
@@ -76,7 +67,7 @@ const CreatePost: React.FC<Props> = ({ Messages, setMessages }) => {
       <div className="CreatePostConfig">
         <div className="InputFile">
           <div className="InputFileIcon">
-            <Image color="rgb(25, 67, 255)" />
+            <Image color="rgb(36, 36, 36)" />
           </div>
           <input
             type="file"

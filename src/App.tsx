@@ -12,12 +12,23 @@ interface User {
   login: string,
 }
 
+interface Message {
+  id: number,
+  writer: string,
+  content: string,
+  image: string | null
+  writer_login: string,
+  writer_avatar: string
+}
+
+
 function App() {
   const [auth, setAuth] = useState<boolean>(false);
   const [myUser, setMyUser] = useState<User>()
+  const [Messages, setMessages] = useState<Message[]>([])
 
   return (
-    <Context.Provider value={{ auth, setAuth, myUser, setMyUser }}>
+    <Context.Provider value={{ auth, setAuth, myUser, setMyUser, Messages, setMessages}}>
       <div className='MainApp'>
         {auth ? <Home /> : <Login />}
       </div>
