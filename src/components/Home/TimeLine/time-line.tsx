@@ -16,15 +16,19 @@ const TimeLine = () => {
     <CreatePost/>
     {Messages.map((message: { writer_avatar: string | undefined; writer: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | null | undefined; writer_login: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | null | undefined; content: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | null | undefined; image: { toString: string | undefined; } ; date: string }) => 
     <div className='Message'>
-        <div className='MessageHead'>
+        <div className='MessageUserImage'>
             <img src={message.writer_avatar} width={60} alt="" />
-            <h3>{message.writer}</h3>
-            <p>@{message.writer_login}</p>
-            <p>{message.date.toString()}</p>
+          
 
 
         </div>
         <div className='MessageContent'>
+            <div className='MessageHead'>
+              <h3>{message.writer}</h3>
+              <p>@{message.writer_login}</p>
+              <p>{message.date.toString()}</p>
+            </div>
+
         <p>{message.content}</p>
 
             {message.image && <img src={message.image.toString()} alt="" />}

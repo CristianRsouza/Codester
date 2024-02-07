@@ -10,3 +10,15 @@ body {
   background: black;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
+
+
+*::-webkit-scrollbar {
+  background: black;
+  width: 7px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: rgb(26, 26, 26);
+  border-radius: 20px;
+  padding: 10px;
+}

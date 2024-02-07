@@ -3,8 +3,11 @@ import { useContext } from 'react';
 import './create-post.css';
 import { Context } from '../../../../App';
 import { Divide, Image } from 'lucide-react';
+import { Socket } from 'socket.io';
+import { io } from 'socket.io-client';
 
 
+const socket = io()
 
 
 const CreatePost = () => {
@@ -13,15 +16,16 @@ const CreatePost = () => {
   const [inputFile, setInputFile] = useState<string | null>(null);
   const { Messages, setMessages } = useContext(Context);
 
-  const date = new Date(); // Cria uma nova instância de Date
+  const date = new Date();
   const hours = date.getHours();
   const minutes = date.getMinutes();
   const day = date.getDate();
-  const month = date.getMonth() + 1; // Os meses começam em 0, então adicionamos 1
+  const month = date.getMonth() + 1; 
   
   const thisDate = `${hours}h${minutes}m, ${day}/${month}`;
   
   const handleMessageAddition = () => {
+    // Create a new message object
     const newMessage = {
       id: Math.floor(Math.random() * 100),
       writer: myUser.name,
@@ -29,15 +33,16 @@ const CreatePost = () => {
       image: inputFile,
       writer_avatar: myUser.avatar,
       writer_login: myUser.login,
-      date: thisDate // Formatando a data para o formato desejado
+      date: thisDate 
     };
 
-   if(inputContent != '') {
-    setMessages([...Messages, newMessage]);
-
-    setInputContent('');
-    setInputFile('');
-   }
+    if (inputContent !== '') {
+      // Update messages state and emit a "post" event to the server
+      setMessages([...Messages, newMessage]);
+      socket.emit("post", Messages);
+      setInputContent('');
+      setInputFile('');
+    }
   };
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -51,7 +56,6 @@ const CreatePost = () => {
       reader.readAsDataURL(e.target.files[0]);
     }
   };
-
   return (
     <div className="CreatePost">
       <div className="CreatePostContent">
@@ -80,7 +84,7 @@ const CreatePost = () => {
           <input
             type="file"
             accept="image/*"
-            onChange={handleFileChange} // Manipule o arquivo aqui
+            onChange={handleFileChange} 
           />
         </div>
         <button onClick={handleMessageAddition}>Postar</button>

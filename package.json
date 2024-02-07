@@ -13,11 +13,14 @@
     "axios": "^1.6.7",
     "cors": "^2.8.5",
     "express": "^4.18.2",
+    "http": "^0.0.1-security",
     "lucide-react": "^0.321.0",
     "query-string": "^8.2.0",
     "query-strings": "^0.1.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "socket.io": "^4.7.4",
+    "socket.io-client": "^4.7.4"
   },
   "devDependencies": {
     "@types/react": "^18.2.43",

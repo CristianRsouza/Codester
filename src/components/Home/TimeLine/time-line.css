@@ -1,17 +1,17 @@
 .TimeLine {
   width: 100%;
+  overflow-x: hidden;
   height: 100%;
   overflow-y: auto;
 }
 
 .Message {
   display: flex;
-  flex-direction: column;
   padding: 20px;
   border: 0.5px solid rgb(36, 36, 36);
   transition: 0.2s;
   cursor: pointer;
-  /* removido flex-wrap: wrap; e text-wrap: wrap; */
+  gap: 20px;
   word-wrap: break-word;
 }
 
@@ -28,7 +28,6 @@
 
 .MessageHead {
   display: flex;
-  align-items: center;
   gap: 10px;
   font-family: Arial, Helvetica, sans-serif;
 }
@@ -37,27 +36,27 @@
   color: rgb(98, 98, 98);
 }
 
-.MessageHead img {
+.MessageUserImage img {
   border-radius: 60px;
 }
 
 .MessageContent p {
   border-left: 4px solid grey;
-  padding: 0 60px;
-  margin: 10px 20px;
   background: none;
   border: none;
   outline: none;
-  font-size: 20px;
+  font-size: 14px;
 
   word-wrap: break-word;
 }
+
 
 .MessageContent img {
   margin: 30px 50px;
   border-radius: 10px;
   height: 350px;
 }
+
 
 .ImageContainer {
   display: flex;
@@ -80,4 +79,11 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
+}
+
+
+.MessageContent {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }

@@ -1,11 +1,34 @@
-import express, {json} from "express";
+import express, { json } from "express";
 import cors from "cors";
 import axios from "axios";
 import qs from "query-string";
+import { Server as SocketServer } from "socket.io";
+import http from 'http';
 
-const app = express()
+const app = express();
 app.use(cors());
 app.use(json());
+const httpServer = http.createServer(app);
+const socketServer = new SocketServer(httpServer, {
+  cors: {
+    origin: "*",
+  }
+});
+
+io.on('connection', (socket) => {
+  console.log('Client connected');
+
+  socket.on('post', (socketContent) => {
+    console.log('Received post:', socketContent);
+    // Aqui você pode fazer o que deseja com o conteúdo recebido do cliente
+    // Por exemplo, você pode emitir uma mensagem para todos os clientes conectados
+    io.emit('newPost', socketContent);
+  });
+
+  socket.on('disconnect', () => {
+    console.log('Client disconnected');
+  });
+});
 
 app.post("/login", async (req, res) => {
   try {
@@ -14,7 +37,7 @@ app.post("/login", async (req, res) => {
 
     const user = await fetchUser(token);
     res.send(user);
-  } catch(err) {
+  } catch (err) {
     if (err.response && err.response.data) {
       console.log("err", err.response.data);
     } else {
@@ -25,19 +48,20 @@ app.post("/login", async (req, res) => {
 });
 
 
+
 async function exchangeCodeForAccessToken(code) {
   const GITHUB_ACCESS_TOKEN_URL = 'https://github.com/login/oauth/access_token';
   const params = {
     code,
     grant_type: 'authorization_code',
     redirect_uri: "http://localhost:5173",
-    client_id: "98347812d33e772baf1e", 
+    client_id: "98347812d33e772baf1e",
     client_secret: "2c77a7f6e97f87d0c071c76ac5525f25b5f3c601",
   };
 
-  const { data } = await axios.post(GITHUB_ACCESS_TOKEN_URL, params, {
+  const { data } = await axios.post(GITHUB_ACCESS_TOKEN_URL, qs.stringify(params), {
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/x-www-form-urlencoded'
     },
   });
 
@@ -55,6 +79,6 @@ async function fetchUser(token) {
   return response.data;
 }
 
-app.listen(5000, () => {
+httpServer.listen(5000, () => {
   console.log(`Server is up and running on port 5000`);
 });
