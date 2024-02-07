@@ -26,6 +26,7 @@
 
 .PostContainer {
   display: flex;
+  margin: 20px 0;
   flex-direction: column;
 }
 
@@ -37,7 +38,7 @@
 }
 
 .CreatePost button {
-  background: rgb(25, 67, 255);
+  background: rgb(36, 36, 36);
   border: none;
   padding: 10px 20px;
   font-size: 17px;
@@ -69,7 +70,7 @@
 }
 
 .InputFileIcon:hover {
-  background: rgba(25, 67, 255, 0.281);
+  background: rgb(13, 13, 13);
 }
 
 

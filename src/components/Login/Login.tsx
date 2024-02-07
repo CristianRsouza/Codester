@@ -51,7 +51,13 @@ const Login = () => {
 
     return (
         <div className='Login'>
-            <button onClick={redirectToGithub}>Login with GitHub</button>
+            <div className='LoginContainer'>
+                <div>  
+                    <h1>CODESTER</h1>
+                    <p>The best social media for devs</p>
+                </div>
+                    <button onClick={redirectToGithub}>Login with GitHub</button>
+                </div>
         </div>
     );
 }

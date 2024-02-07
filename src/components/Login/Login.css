@@ -2,21 +2,46 @@
   height: 100vh;
   width: 100vw;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.Login button {
-  background: rgb(25, 67, 255);
-  border: none;
+.LoginContainer {
+  border: 1px solid rgb(36, 36, 36);
+  padding: 50px;
+  border-radius: 7px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.LoginContainer button {
+  background: transparent;
+  border: 0.5px solid rgb(36, 36, 36);
   padding: 10px 20px;
   font-size: 17px;
   border-radius: 20px;
   cursor: pointer;
   transition: 0.2s;
   font-weight: bold;
+  width: 100%;
 }
 
-.Login button:hover {
-  background: rgb(18, 50, 189);
+.LoginContainer button:hover {
+  background: rgb(20, 20, 20);
+}
+
+.LoginContainer div{
+  display: flex;
+  flex-direction: column;
+}
+
+.LoginContainer p {
+  font-size: 25px;
+  color: gray;
+}
+
+.LoginContainer h1 {
+  font-size: 35px;
 }

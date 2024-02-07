@@ -1,5 +1,6 @@
 import './Home.css'
 import SideBar from './SideBar/SideBar'
+import ThrendBar from './ThrendBar/thrend-bar'
 import TimeLine from './TimeLine/time-line'
 
 const Home = () => {
@@ -8,6 +9,8 @@ const Home = () => {
         <SideBar/>
         <hr />
         <TimeLine/>
+        <hr />
+        <ThrendBar/>
     </div>
   )
 }
