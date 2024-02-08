@@ -1,0 +1,33 @@
+.InputSearch {
+  width: 100%;
+  display: flex;
+}
+
+.InputSearch input {
+  width: 100%;
+  margin: 15px;
+  outline: none;
+  border: 2px solid rgb(36, 36, 36);
+  background: transparent;
+  padding: 10px 20px;
+  border-radius: 50px;
+  font-size: 16px;
+}
+
+.InvisibleSearchModal {
+  display: none;
+  opacity: 0;
+}
+
+.SearchModal {
+  position: absolute;
+  display: flex;
+  margin: 10px;
+  width: 230px;
+  max-width: 230px;
+  top: 100px;
+  background: black;
+  border: 1px solid rgb(36, 36, 36);
+  border-radius: 5px;
+  padding: 20px;
+}

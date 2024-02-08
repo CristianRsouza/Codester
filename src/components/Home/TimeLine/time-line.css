@@ -58,22 +58,7 @@
 }
 
 
-.ImageContainer {
-  display: flex;
-  border: 1px solid rgb(36, 36, 36);
-  border-radius: 10px;
-}
 
-.ImageContainer p {
-  position: absolute;
-  margin: 20px 350px;
-  font-size: 20px;
-  cursor: pointer;
-  border-radius: 50px;
-  padding: 10px 16px;
-  text-align: center;
-  background: rgb(36, 36, 36);
-}
 
 .PostContainer {
   display: flex;

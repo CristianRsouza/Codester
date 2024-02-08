@@ -68,9 +68,11 @@ const CreatePost = () => {
               />
                    {inputFile && <div className='ImageContainer'>
                                     <img src={inputFile} className='Image'  alt="" />
-                                    <p onClick={() => {
-                                      setInputFile(null)
-                                    }}>x</p>
+                                        <div className='RemoveImage'>
+                                            <p onClick={() => {
+                                          setInputFile(null)
+                                        }}>x</p>
+                                        </div>
                                   </div>}
                   
             </div>

@@ -19,8 +19,30 @@
   max-height: 60px;
 }
 
+.ImageContainer {
+  display: flex;
+  border: 1px solid rgb(36, 36, 36);
+  border-radius: 10px;
+  width: 500px;
+}
+
+.RemoveImage {
+  position: absolute;
+  padding: 20px;
+  background: black;
+  border-radius: 5px;
+  border: 1px solid rgb(36, 36, 36);
+  cursor: pointer;
+}
+
+.RemoveImage p{
+  font-size: 20px;
+  cursor: pointer;
+} 
+
+
 .CreatePost .Image {
-  height: 400px;
+  width: 500px;
 }
 
 .PostContainer {
